@@ -1,0 +1,19 @@
+version: v1.0
+name: Docker Build 
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Build
+    task:
+      jobs:
+        - name: 'ubuntu-multiprocess'
+          commands:
+            - checkout
+            - git clone https://github.com/huginn/huginn.git build
+            - cp -R ubuntu/multi-process build
+            - cd build
+            - docker build --network=host -t docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn:ubuntu .
+            - docker save -o huginn-multiprocess-ubuntu-container.tar docker.pkg.github.com/catdeployed/huginn-docker-k8s/huginn:ubuntu
+            - artifact push workflow huginn-multiprocess-ubuntu-container.tar --expire-in 1d
