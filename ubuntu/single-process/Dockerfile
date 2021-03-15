@@ -27,7 +27,7 @@ RUN apt-get update && apt-get -y install libcap2-bin && \
 EXPOSE 3000
 
 COPY ["docker/scripts/setup_env", "docker/single-process/scripts/init", "/scripts/"]
-RUN setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/ruby
+RUN setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/ruby2.5
 CMD ["/scripts/init"]
 
 USER 1001
