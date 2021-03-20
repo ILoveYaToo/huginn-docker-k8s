@@ -17,7 +17,7 @@ blocks:
             - artifact pull workflow huginn-multiprocess-ubuntu-container.tar
             - docker load -i huginn-multiprocess-ubuntu-container.tar
             - echo "$DOCKER_GITHUB_PASS" | docker login docker.pkg.github.com --username "$DOCKER_GITHUB_USER" --password-stdin
-            - docker push docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn:ubuntu
+            - docker push docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn-multi-process:ubuntu
             - artifact yank workflow huginn-multiprocess-ubuntu-container.tar
         - name: 'ubuntu-singleprocess'
           commands:
