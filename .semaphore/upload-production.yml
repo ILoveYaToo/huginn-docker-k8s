@@ -7,7 +7,7 @@ agent:
 global_job_config:
   secrets:
     - name: DOCKER_GITHUB
-    - name: DOCKER_HUB
+    - name: DOCKER_HUB_ILOVEYATOO
 blocks:
   - name: Upload
     task:
@@ -16,13 +16,13 @@ blocks:
           commands:
             - artifact pull workflow huginn-multiprocess-ubuntu-container.tar
             - docker load -i huginn-multiprocess-ubuntu-container.tar
-            - echo "$DOCKER_GITHUB_PASS" | docker login docker.pkg.github.com --username "$DOCKER_GITHUB_USER" --password-stdin
-            - docker push docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn-multi-process:ubuntu
+            - echo "$DOCKER_HUB_ILOVEYATOO_PASS" | docker login --username "$DOCKER_HUB_ILOVEYATOO_USER" --password-stdin
+            - docker push iloveyatoo/huginn-multi-process:ubuntu
             - artifact yank workflow huginn-multiprocess-ubuntu-container.tar
         - name: 'ubuntu-singleprocess'
           commands:
             - artifact pull workflow huginn-singleprocess-ubuntu-container.tar
             - docker load -i huginn-singleprocess-ubuntu-container.tar
-            - echo "$DOCKER_GITHUB_PASS" | docker login docker.pkg.github.com --username "$DOCKER_GITHUB_USER" --password-stdin
-            - docker push docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn-single-process:ubuntu
+            - echo "$DOCKER_HUB_ILOVEYATOO_PASS" | docker login --username "$DOCKER_HUB_ILOVEYATOO_USER" --password-stdin
+            - docker push iloveyatoo/huginn-single-process:ubuntu
             - artifact yank workflow huginn-singleprocess-ubuntu-container.tar

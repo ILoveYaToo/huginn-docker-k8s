@@ -15,8 +15,8 @@ blocks:
             - cp -R ubuntu/multi-process/* build
             - cd build
             - ls
-            - docker build --network=host -t docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn-multi-process:ubuntu .
-            - docker save -o huginn-multiprocess-ubuntu-container.tar docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn-multi-process:ubuntu
+            - docker build --network=host -t iloveyatoo/huginn-multi-process:ubuntu .
+            - docker save -o huginn-multiprocess-ubuntu-container.tar iloveyatoo/huginn-multi-process:ubuntu
             - artifact push workflow huginn-multiprocess-ubuntu-container.tar --expire-in 1d
         - name: 'ubuntu-singleprocess'
           commands:
@@ -25,8 +25,8 @@ blocks:
             - cp -R ubuntu/single-process/* build
             - cd build
             - ls
-            - docker build --network=host -t docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn-single-process:ubuntu .
-            - docker save -o huginn-singleprocess-ubuntu-container.tar docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn-single-process:ubuntu
+            - docker build --network=host -t iloveyatoo/huginn-single-process:ubuntu .
+            - docker save -o huginn-singleprocess-ubuntu-container.tar iloveyatoo/huginn-single-process:ubuntu
             - artifact push workflow huginn-singleprocess-ubuntu-container.tar --expire-in 1d
 promotions:
   - name: Upload to Production
