@@ -4,9 +4,4 @@
 
 This is a project to rebuild the huginn single-process and multi-process containers with proper containerd support due to https://github.com/containerd/containerd/issues/2516 .
 
-single process container: [![Build Status](https://iloveyatoo.semaphoreci.com/badges/huginn-docker-k8s/branches/master.svg?style=shields)](https://iloveyatoo.semaphoreci.com/projects/huginn-docker-k8s)
-Packages are available at:
-https://hub.docker.com/repository/docker/iloveyatoo/huginn-single-process
-https://hub.docker.com/repository/docker/iloveyatoo/huginn-multi-process
-
-and are built daily.
+Builds are created daily at 12:00 UTC.
