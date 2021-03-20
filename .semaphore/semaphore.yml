@@ -18,3 +18,13 @@ blocks:
             - docker build --network=host -t docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn:ubuntu .
             - docker save -o huginn-multiprocess-ubuntu-container.tar docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn:ubuntu
             - artifact push workflow huginn-multiprocess-ubuntu-container.tar --expire-in 1d
+        - name: 'ubuntu-singleprocess'
+          commands:
+            - checkout
+            - git clone https://github.com/huginn/huginn.git build
+            - cp -R ubuntu/single-process/* build
+            - cd build
+            - ls
+            - docker build --network=host -t docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn-single-process:ubuntu .
+            - docker save -o huginn-singleprocess-ubuntu-container.tar docker.pkg.github.com/iloveyatoo/huginn-docker-k8s/huginn-single-process:ubuntu
+            - artifact push workflow huginn-singleprocess-ubuntu-container.tar --expire-in 1d
