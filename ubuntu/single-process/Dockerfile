@@ -21,7 +21,7 @@ ENV OUTDATED_DOCKER_IMAGE_NAMESPACE ${OUTDATED_DOCKER_IMAGE_NAMESPACE}
 RUN apt-get update && apt-get -y install libcap2-bin && \
     rm -rf /var/lib/apt/lists/* && \
     umask 002 && \
-    bundle update mimemagic
+    bundle update mimemagic \
     LC_ALL=en_US.UTF-8 RAILS_ENV=production APP_SECRET_TOKEN=secret DATABASE_ADAPTER=mysql2 ON_HEROKU=true bundle exec rake assets:clean assets:precompile && \
     chmod g=u /app/.env.example /app/Gemfile.lock /app/config/ /app/tmp/
 
